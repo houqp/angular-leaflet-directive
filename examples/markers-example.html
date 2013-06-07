@@ -2,7 +2,8 @@
   <head>
     <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-    <script src="../dist/angular-leaflet-directive.min.js"></script>
+    <!--<script src="../dist/angular-leaflet-directive.min.js"></script>-->
+    <script src="../src/angular-leaflet-directive.js"></script>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
@@ -29,6 +30,9 @@
                         message: "Hey, drag me if you want",
                         draggable: true
                     }
+                },
+                setViewZoom: function() {
+                    $scope.map.setView([$scope.london.lat, $scope.london.lng], 10);
                 }
             });
         };
@@ -41,6 +45,7 @@
     </style>
   </head>
   <body ng-controller="DemoController">
-    <leaflet center="london" markers="markers"></leaflet>
+    <leaflet center="london" markers="markers" map="map"></leaflet>
+    <a ng-click="setViewZoom()">click</a>
   </body>
 </html>

@@ -33,12 +33,14 @@ leafletDirective.directive("leaflet", ["$http", "$log", function ($http, $log) {
             maxBounds: '=maxbounds',
             markers: '=markers',
             defaults: '=defaults',
-            path: '=path'
+            path: '=path',
+            map: '=map'
         },
         template: '<div class="angular-leaflet-map"></div>',
         link: function ($scope, element, attrs /*, ctrl */) {
             var map = new L.Map(element[0]);
             map.setView([0, 0], 1);
+            $scope.map = map;
 
             $scope.leaflet = {};
             $scope.leaflet.map = !!attrs.testing ? map : 'Add testing="testing" to <leaflet> tag to inspect this object';
